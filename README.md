@@ -1,77 +1,50 @@
 # Pharmacy-claims
 SQL Project
 
-This repository contains the SQL scripts and database schema for a Pharmacy Database Management System. The system manages information about members, drugs, and prescriptions within a pharmacy setting.
+This repository contains SQL scripts for creating and managing a pharmacy database. The database includes three tables: `dim_members`, `dim_drugs`, and `fact_prescriptions`. It also demonstrates the usage of primary and foreign keys for data integrity.
 
-## Database Structure
+## Table of Contents
+- [Database Schema](#database-schema)
+- [Queries](#queries)
+- [Usage](#usage)
 
-The database consists of three tables:
+## Database Schema
 
-1. `dim_members`: Information about pharmacy members.
-2. `dim_drugs`: Details about different drugs.
-3. `fact_prescriptions`: Records of prescriptions, including member details, drug details, and prescription information.
+### dim_members
+- `member_id` (Primary Key)
+- `member_first_name`
+- `member_last_name`
+- `member_age`
 
-## Setup Instructions
+### dim_drugs
+- `drug_ndc` (Primary Key)
+- `drug_name`
+- `drug_description`
 
-1. Create the database:
+### fact_prescriptions
+- `prescription_id` (Primary Key)
+- `member_id` (Foreign Key referencing `dim_members`)
+- `drug_ndc` (Foreign Key referencing `dim_drugs`)
+- `fill_date`
+- `copay`
+- `insurance_paid`
 
-    ```sql
-    CREATE DATABASE IF NOT EXISTS Pharmacy;
-    USE Pharmacy;
-    ```
+## Queries
 
-2. Display the tables:
+The following SQL queries are included in this repository:
 
-    ```sql
-    SELECT * FROM dim_members;
-    SELECT * FROM dim_drugs;
-    SELECT * FROM fact_prescriptions;
-    ```
+1. Displaying tables: `dim_members`, `dim_drugs`, and `fact_prescriptions`.
+2. Adding primary and foreign keys to the tables.
+3. Retrieving the number of prescriptions for each drug.
+4. Counting prescriptions for a specific drug ('Ambien').
+5. Grouping prescriptions by age group and calculating related statistics.
+6. Counting unique members and prescriptions for members over 65.
+7. Selecting the latest prescription for each member and drug.
+8. Selecting the latest prescription for a specific member (e.g., member_id = 10003).
 
-3. Add primary and foreign keys:
+## Usage
 
-    ```sql
-    -- Commands to add primary and foreign keys
-    ```
+1. Clone the repository:
 
-4. Query Examples:
-
-    - Count of prescriptions for each drug:
-
-        ```sql
-        -- Query to count prescriptions for each drug
-        ```
-
-    - Count of prescriptions for a specific drug (e.g., Ambien):
-
-        ```sql
-        -- Query to count prescriptions for Ambien
-        ```
-
-    - Statistics based on member age:
-
-        ```sql
-        -- Query for statistics based on member age
-        ```
-
-    - Prescriptions for members over 65:
-
-        ```sql
-        -- Query for prescriptions for members over 65
-        ```
-
-    - Latest prescriptions for each member:
-
-        ```sql
-        -- Query for the latest prescriptions for each member
-        ```
-
-    - Latest prescription for a specific member (e.g., member_id = 10003):
-
-        ```sql
-        -- Query for the latest prescription for a specific member
-        ```
-
-Feel free to explore the SQL scripts and use them as a foundation for your pharmacy management system.
-
-Happy coding!
+```bash
+git clone https://github.com/Hritvik111/Pharmacy-claims.git
